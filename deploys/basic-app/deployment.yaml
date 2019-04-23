@@ -1,0 +1,89 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: coffee
+  namespace: test-jenkins
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cafe
+      drink: coffee
+  template:
+    metadata:
+      labels:
+        app: cafe
+        drink: coffee
+    spec:
+      containers:
+      - name: coffee
+        image: nginxdemos/hello:plain-text
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: test-jenkins
+  name: coffee-svc
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    drink: coffee
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: test-jenkins
+  name: tea
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cafe
+      drink: tea
+  template:
+    metadata:
+      labels:
+        app: cafe
+        drink: tea
+    spec:
+      containers:
+      - name: tea 
+        image: nginxdemos/hello:plain-text
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: test-jenkins
+  name: tea-svc
+  labels:
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    drink: tea
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: test-jenkins
+  name: cafe-svc
+  labels:
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: cafe
