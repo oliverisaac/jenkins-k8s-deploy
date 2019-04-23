@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  namespace: test-jenkins
+  namespace: ${params.namespace}
   name: cafe-ingress
   annotations:
     certmanager.k8s.io/cluster-issuer: letsencrypt-prod
@@ -14,7 +14,7 @@ spec:
     - cafe.dev.bushelops.com
     secretName: cafe-secret
   rules:
-  - host: cafe.dev.bushelops.com
+  - host: ${params.appname}.dev.bushelops.com
     http:
       paths:
       - path: /tea

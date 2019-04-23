@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: coffee
-  namespace: test-jenkins
+  namespace: ${params.namespace}
 spec:
   replicas: 2
   selector:
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: test-jenkins
+  namespace: ${params.namespace}
   name: coffee-svc
 spec:
   ports:
@@ -38,7 +38,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: test-jenkins
+  namespace: ${params.namespace}
   name: tea
 spec:
   replicas: 3
@@ -61,7 +61,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: test-jenkins
+  namespace: ${params.namespace}
   name: tea-svc
   labels:
 spec:
@@ -76,7 +76,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: test-jenkins
+  namespace: ${params.namespace}
   name: cafe-svc
   labels:
 spec:
