@@ -18,6 +18,13 @@ pipeline {
             description: 'Kubernetes Target Context'
         )
     }
+
+    environment {
+        NAMESPACE = "${params.namespace}"
+        APP_NAME = "${params.appname}"
+    }
+
+
     stages {
         stage('Checkout') {
             steps {
