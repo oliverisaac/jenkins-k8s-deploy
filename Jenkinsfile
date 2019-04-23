@@ -3,6 +3,8 @@
 import hudson.model.*
 
 node('master'){
+    label: 'jdk11'
+
     kubernetesDeploy(
         kubeconfigId: 'bushelops-jenkins',               // REQUIRED
 
