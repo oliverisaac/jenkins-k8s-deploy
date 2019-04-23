@@ -1,1 +1,12 @@
-kubernetesDeploy configs: 'deploys/basic-app/*.yaml', kubeConfig: [path: ''], kubeconfigId: 'bushelops-jenkins', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+#!/usr/bin/env groovy
+
+import hudson.model.*
+
+node('master'){
+    kubernetesDeploy(
+        kubeconfigId: 'bushelops-jenkins',               // REQUIRED
+
+        configs: 'deploys/basic-app/*.yaml', // REQUIRED
+        enableConfigSubstitution: true,
+    )
+}
