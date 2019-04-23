@@ -1,0 +1,1 @@
+kubernetesDeploy configs: 'deploys/basic-app/*.yaml', kubeConfig: [path: ''], kubeconfigId: 'bushelops-jenkins', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
