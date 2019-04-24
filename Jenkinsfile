@@ -11,11 +11,13 @@ pipeline {
         string(name: 'appname', defaultValue: 'cafe', description: 'Name of app')
         string(name: 'context', defaultValue: '', description: 'Jenkins Kubernetes credentials to use')
         string(name: 'appType', defaultValue: 'basic-app', description: 'Type of app to deploy')
+        string(name: 'TLD', defaultValue: '', description: 'Ingress TLD to use.')
     }
 
     environment {
         NAMESPACE = "${params.namespace}"
         APP_NAME = "${params.appname}"
+        TLD = "${params.TLD}"
     }
 
     stages {
