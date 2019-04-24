@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - cafe.dev.bushelops.com
+    - ${APP_NAME}.${TLD}
     secretName: cafe-secret
   rules:
-  - host: ${APP_NAME}.dev.bushelops.com
+  - host: ${APP_NAME}.${TLD}
     http:
       paths:
       - path: /tea
