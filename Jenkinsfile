@@ -2,7 +2,8 @@
 
 pipeline {
     agent {
-
+        kubernetes {
+        }
     }
 
     parameters {
