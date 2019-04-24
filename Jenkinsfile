@@ -1,6 +1,10 @@
 #!/usr/bin/env groovy
 
 pipeline {
+    agent {
+
+    }
+
     parameters {
         string(name: 'namespace', defaultValue: 'test-jenkins', description: 'Which namespace should we deploy to?')
         string(name: 'appname', defaultValue: 'cafe', description: 'Name of app')
