@@ -15,6 +15,7 @@ pipeline {
         string(name: 'ingressClass', defaultValue: 'external', description: 'nginx ingress class to use')
     }
 
+    // environment is used in the kubernetes yaml files for templating
     environment {
         NAMESPACE = "${params.namespace}"
         APP_NAME = "${params.appname}"
