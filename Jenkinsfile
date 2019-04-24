@@ -12,12 +12,14 @@ pipeline {
         string(name: 'context', defaultValue: '', description: 'Jenkins Kubernetes credentials to use')
         string(name: 'appType', defaultValue: 'basic-app', description: 'Type of app to deploy')
         string(name: 'TLD', defaultValue: '', description: 'Ingress TLD to use.')
+        string(name: 'ingressClass', defaultValue: 'external', description: 'nginx ingress class to use')
     }
 
     environment {
         NAMESPACE = "${params.namespace}"
         APP_NAME = "${params.appname}"
         TLD = "${params.TLD}"
+        INGRESS_CLASS = "${params.ingressClass}"
     }
 
     stages {
